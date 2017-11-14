@@ -80,6 +80,7 @@ char	*ft_strtrim_delim(char const *s, char c);
 int		ft_atoi(char *str);
 int		ft_isspace(char c);
 char	**ft_strsplit(char const *s, char c);
+char	**ft_strsplitn(char const *s, char c, int *n);
 int		get_next_line(const int fd, char **line);
 t_list	*ft_lstnew(void *content, size_t content_size);
 void	ft_lstadd_back(t_list **alst, void *content);

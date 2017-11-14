@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft/includes/libft.h"
+# include <stdio.h>//debug
 
 typedef struct		s_room
 {

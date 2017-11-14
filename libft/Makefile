@@ -63,6 +63,7 @@ SRC = ft_isascii.c\
 	  ft_memmove.c\
 	  ft_strtrim_delim.c\
 	  ft_strsplit.c\
+	  ft_strsplitn.c\
 	  ft_atoi.c\
 	  ft_isspace.c\
 	  get_next_line.c\

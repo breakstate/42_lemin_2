@@ -18,13 +18,15 @@ int		ft_iscomment(char *str)
 */
 int		ft_isnumber(char *str)
 {
-	while (str)
+	int		i;
+	i = 0;
+	while (str[i])
 	{
-		if (!ft_isdigit(*str))
+		if (!ft_isdigit(str[i]))
 		{
 			return (0);
 		}
-		str++;
+		i++;
 	}
 	return (1);
 }

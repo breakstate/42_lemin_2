@@ -6,19 +6,21 @@ SRC = main.c \
 
 FLAGS = -Wall -Werror -Wextra -g 
 
-LIBFT = -L ./libft.libft.a -lft 
+LIBFT = -L ./libft -lft 
 
 INCLUDES = -I lemin.h
 
 all: $(NAME)
 
 $(NAME):
-	make -C ./libft 
-	gcc -o $(NAME) $(SRC) $(LIBFT) $(INCLUDES)
+	$(MAKE) -C ./libft 
+	gcc -o $(NAME) $(SRC) $(LIBFT)
 
 clean: 
 	rm -f $(NAME)
+	$(MAKE) clean -C ./libft
 
 fclean: clean
+	$(MAKE) fclean -C ./libft
 
 re: fclean all
