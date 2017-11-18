@@ -1,6 +1,33 @@
 #include "lemin.h"
 
 /*
+**	ft_free_arr()
+**	frees passed in 2D array
+*/
+void	ft_free_arr(char **arr)//plz test
+{
+	int		i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+	}
+	free(arr[i]);	
+	free(arr);
+}	
+
+/*
+**	ft_error()
+**	takes string to be used as error message, prints and exits
+*/
+void	ft_error(char *error)
+{
+	ft_putendl(error);
+	exit(-1);
+}
+
+/*
 **	ft_iscomment()
 **	takes a string and checks if is comment or not
 */
