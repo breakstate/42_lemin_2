@@ -1,6 +1,16 @@
 #include "lemin.h"
 
 /*
+**	4/5
+**
+**	void	ft_free_arr();
+**	void	ft_error();
+**	int		ft_iscomment();
+**	int		ft_isnumber();
+*/
+
+/*
+**===================================================================
 **	ft_free_arr()
 **	frees passed in 2D array
 */
@@ -18,6 +28,7 @@ void	ft_free_arr(char **arr)//plz test
 }	
 
 /*
+**===================================================================
 **	ft_error()
 **	takes string to be used as error message, prints and exits
 */
@@ -28,6 +39,7 @@ void	ft_error(char *error)
 }
 
 /*
+**===================================================================
 **	ft_iscomment()
 **	takes a string and checks if is comment or not
 */
@@ -39,6 +51,7 @@ int		ft_iscomment(char *str)
 }
 
 /*
+**===================================================================
 **	ft_isnumber()
 **	takes string and checks if valid number
 **	uses ptrarith so test

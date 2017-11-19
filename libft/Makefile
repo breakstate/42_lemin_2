@@ -38,6 +38,7 @@ SRC = ft_isascii.c\
 	  ft_putendl_fd.c\
 	  ft_strclr.c\
 	  ft_strjoin.c\
+	  ft_strjoinf.c\
 	  ft_strnew.c\
 	  ft_strsub.c\
 	  ft_putchar.c\

@@ -53,6 +53,7 @@ void	ft_putendl(char const *s);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_strclr(char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoinf(char *s1, char const *s2);
 char	*ft_strnew(size_t size);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 void	ft_putchar(char c);

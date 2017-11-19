@@ -1,6 +1,16 @@
 #include "lemin.h"
 
 /*
+**	4/5
+**
+**	int		ft_countants();
+**	void	ft_nodehandler();
+**	void	ft_linkhandler();
+**	int		ft_read();
+*/
+
+/*
+**===================================================================
 **	count_ants()
 **	gets number of ants from file
 */
@@ -30,6 +40,11 @@ int		ft_countants(void)
 	return (num_ants);
 }
 
+/*
+**===================================================================
+**	ft_nodehandler()
+**	nodes sent here to be added to list
+*/
 void	ft_nodehandler(t_room **room_lst, char *line)
 {
 	if (ft_strcmp(line, "##start") == 0)
@@ -57,6 +72,11 @@ void	ft_nodehandler(t_room **room_lst, char *line)
 	}
 }
 
+/*
+**===================================================================
+**	ft_linkhandler()
+**	links sent here to be added to nodes
+*/
 void	ft_linkhandler(t_room **room_lst, char *line)
 {
 	char	**str_arr;
@@ -67,8 +87,8 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 		ft_error("Error: Format error");
 	//check_str_arr;
 	//printf("ft_addlink1 [%s]\n", line);//debug
-	ft_addlink(room_lst, str_arr[0], str_arr[1]);
-	ft_addlink(room_lst, str_arr[1], str_arr[0]);
+	ft_addlink(*room_lst, str_arr[0], str_arr[1]);
+	ft_addlink(*room_lst, str_arr[1], str_arr[0]);
 	//printf("swap links\n");//debug
 	//ft_swaplinks;
 	//printf("ft_addlink2\n");//debug	<---
@@ -77,6 +97,7 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 }
 
 /*
+**===================================================================
 **	read()
 **	parses rest of file after number of ants
 */

@@ -9,6 +9,8 @@
 # define NRML 0
 # define STRT 1
 # define END 2
+# define TRUE 1
+# define FALSE 0
 
 typedef struct		s_room
 {
@@ -46,10 +48,8 @@ int		ft_isnumber(char *str);
 t_room	*ft_newroom(char *line, int type);
 void	ft_lstaddf(t_room **room_lst, char *line, int type);
 void	ft_lstaddb(t_room **room_lst, char *line, int type);
-void	ft_addlink(t_room **room_lst, char *l1, char *l2);
+void	ft_addlink(t_room *room_lst, char *l1, char *l2);
 void	ft_print_list(t_room *head);//debug
-
-
 
 
 #endif

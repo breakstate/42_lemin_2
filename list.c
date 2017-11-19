@@ -1,5 +1,20 @@
 #include "lemin.h"
 
+/*
+**	5/5
+**
+**	t_room	*ft_newroom();
+**	void	ft_lstaddf();
+**	void	ft_lstaddb();
+**	void	ft_addlink();
+**	void	ft_print_list(); debug
+*/
+
+/*
+**===================================================================
+**	ft_newroom()
+**	mallocs and initializes a new room struct node
+*/
 t_room	*ft_newroom(char *line, int type)
 {
 	t_room	*new;
@@ -19,6 +34,11 @@ t_room	*ft_newroom(char *line, int type)
 	new->next = NULL;
 }
 
+/*
+**===================================================================
+**	ft_lstaddf()
+**	adds node to front of list
+*/
 void	ft_lstaddf(t_room **room_lst, char *line, int type)
 {
 	t_room *temp;
@@ -36,6 +56,11 @@ void	ft_lstaddf(t_room **room_lst, char *line, int type)
 	//add error + free code
 }
 
+/*
+**===================================================================
+**	ft_lstaddb()
+**	adds node to back of list
+*/
 void	ft_lstaddb(t_room **room_lst, char *line, int type)
 {
 	t_room *current;
@@ -52,14 +77,39 @@ void	ft_lstaddb(t_room **room_lst, char *line, int type)
 	//add error + free code
 }
 
-void	ft_addlink(t_room **room_lst, char *l1, char *l2)
+/*
+**===================================================================
+**	ft_addlink()
+**	adds link string to room node
+*/
+void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 {
-	printf(">> [%s] linked to [%s]\n", l1, l2);
+	int		found;
+	char	*tmp;
+	
+	found = FALSE;
+	
+	while (room_lst)
+	{
+		if (ft_strcmp(room_lst->id, l1) == 0)
+		{
+			found = TRUE;
+			tmp = ft_strdup(l2);
+			free(room_lst->links);
+			room_lst->links = ft_strjoinf(room_lst->links, l2);
+			room_lst->links = ft_strjoinf(room_lst->links, " ");
+			printf(">> [%s] linked to [%s]\n", l1, l2);
+		}
+		room_lst = room_lst->next;
+	}
+	if (found == FALSE)
+	{
+		ft_error("Error: link erorr");
+	}
 }
 
-//ft_swaplinks;
-
 /*	
+**===================================================================
 **	ft_print_list()
 **	prints list designated by head for debugging purposes
 */
