@@ -2,7 +2,8 @@ NAME = lemin
 
 SRC = main.c \
 		parse.c \
-		utilities.c
+		utilities.c \
+		list.c
 
 FLAGS = -Wall -Werror -Wextra -g 
 

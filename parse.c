@@ -35,8 +35,8 @@ void	ft_nodehandler(t_room **room_lst, char *line)
 	if (ft_strcmp(line, "##start") == 0)
 	{
 		get_next_line(0, &line);
-		printf("ft_lstaddf\n");//debug		
-		//ft_lstaddfront(room_lst, line, STRT);<=---
+		//printf("ft_lstaddf\n");//debug		
+		ft_lstaddf(room_lst, line, STRT);
 		printf("line = %s\n", line);//debug
 		//print
 		free(line);
@@ -44,37 +44,18 @@ void	ft_nodehandler(t_room **room_lst, char *line)
 	else if (ft_strcmp(line, "##end") == 0)
 	{
 		get_next_line(0, &line);
-		printf("ft_lstaddb\n");//debug
-		//ft_lstappend(room_lst, line, END);<---
+		//printf("ft_lstaddb\n");//debug
+		ft_lstaddb(room_lst, line, END);
 		printf("line = %s\n", line);//debug		
 		//print
 		free(line);
 	}
 	else 
 	{
-		printf("ft_lstaddb other\n");//debug
-		//ft_lstappend(room_lst, line, NRML);
+		//printf("ft_lstaddb other\n");//debug
+		ft_lstaddb(room_lst, line, NRML);
 	}
 }
-/*	str_arr = ft_strsplitn(line, ' ', &split_count);
-	if (split_count != 3)
-	{
-		//free_arr
-		ft_error("Error: Format error");
-	}
-	if ((new = (t_room *)malloc(sizeof(t_room))) == NULL)
-	{
-		ft_error("Error: malloc failed");
-	
-*/	
-
-
-
-	//malloc t_room new;
-	//split with strsplitn
-	//error if count != 3
-	//init the struct new
-	//free array returned by strsplit
 
 void	ft_linkhandler(t_room **room_lst, char *line)
 {
@@ -85,11 +66,12 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 	if (str_count != 2)
 		ft_error("Error: Format error");
 	//check_str_arr;
-	printf("ft_addlink1 [%s]\n", line);//debug
-	//ft_addlink(room_lst, str_arr);<---
-	printf("swap links\n");//debug
+	//printf("ft_addlink1 [%s]\n", line);//debug
+	ft_addlink(room_lst, str_arr[0], str_arr[1]);
+	ft_addlink(room_lst, str_arr[1], str_arr[0]);
+	//printf("swap links\n");//debug
 	//ft_swaplinks;
-	printf("ft_addlink2\n");//debug	<---
+	//printf("ft_addlink2\n");//debug	<---
 	//ft_addlink(room_lst, str_arr);
 	//free_arr
 }

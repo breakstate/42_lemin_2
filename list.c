@@ -54,7 +54,27 @@ void	ft_lstaddb(t_room **room_lst, char *line, int type)
 
 void	ft_addlink(t_room **room_lst, char *l1, char *l2)
 {
-
+	printf(">> [%s] linked to [%s]\n", l1, l2);
 }
 
 //ft_swaplinks;
+
+/*	
+**	ft_print_list()
+**	prints list designated by head for debugging purposes
+*/
+void	ft_print_list(t_room *head)//for debugging purposes
+{
+	while (head)
+	{
+		char *type;
+		if (head->type == STRT)
+			type = "STRT";
+		else if (head->type == END)
+			type = "END";
+		else 
+			type = "NRML";
+		printf("node id = [%s] -- [%s]\n", head->id, type);
+		head = head->next;
+	}
+}
