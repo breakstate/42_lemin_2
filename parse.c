@@ -50,24 +50,19 @@ void	ft_nodehandler(t_room **room_lst, char *line)
 	if (ft_strcmp(line, "##start") == 0)
 	{
 		get_next_line(0, &line);
-		//printf("ft_lstaddf\n");//debug		
 		ft_lstaddf(room_lst, line, STRT);
-		printf("line = %s\n", line);//debug
-		//print
+		ft_putendl(line);//print
 		free(line);
 	}
 	else if (ft_strcmp(line, "##end") == 0)
 	{
 		get_next_line(0, &line);
-		//printf("ft_lstaddb\n");//debug
 		ft_lstaddb(room_lst, line, END);
-		printf("line = %s\n", line);//debug		
-		//print
+		ft_putendl(line);//print
 		free(line);
 	}
 	else 
 	{
-		//printf("ft_lstaddb other\n");//debug
 		ft_lstaddb(room_lst, line, NRML);
 	}
 }
@@ -86,14 +81,10 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 	if (str_count != 2)
 		ft_error("Error: Format error");
 	//check_str_arr;
-	//printf("ft_addlink1 [%s]\n", line);//debug
 	ft_addlink(*room_lst, str_arr[0], str_arr[1]);
 	ft_addlink(*room_lst, str_arr[1], str_arr[0]);
-	//printf("swap links\n");//debug
-	//ft_swaplinks;
-	//printf("ft_addlink2\n");//debug	<---
-	//ft_addlink(room_lst, str_arr);
-	//free_arr
+	ft_free_arr(str_arr);
+	str_arr = NULL;
 }
 
 /*
@@ -108,12 +99,12 @@ int		ft_read(t_room **room_lst)
 
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
-		//print
+		ft_putendl(line);//print		
 		while (ft_iscomment(line))
 		{
 			free(line);
 			get_next_line(0, &line);
-			//print
+			ft_putendl(line);//print	
 		}
 		if (!ft_strchr(line, '-'))
 			ft_nodehandler(room_lst, line);

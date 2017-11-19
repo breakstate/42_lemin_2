@@ -22,6 +22,7 @@ void	ft_free_arr(char **arr)//plz test
 	while (arr[i])
 	{
 		free(arr[i]);
+		i++;
 	}
 	free(arr[i]);	
 	free(arr);

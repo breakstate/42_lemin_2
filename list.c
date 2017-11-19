@@ -27,9 +27,9 @@ t_room	*ft_newroom(char *line, int type)
 	new->id = ft_strdup(split[0]);
 	new->type = type;
 	new->weight = -1;
-	new->populated = 0;
+	new->populated = FALSE;
 	new->links = ft_strnew(0);
-	new->moved = 0;
+	new->moved = FALSE;
 	new->prev = "";
 	new->next = NULL;
 }
@@ -95,10 +95,11 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 		{
 			found = TRUE;
 			tmp = ft_strdup(l2);
-			free(room_lst->links);
-			room_lst->links = ft_strjoinf(room_lst->links, l2);
-			room_lst->links = ft_strjoinf(room_lst->links, " ");
-			printf(">> [%s] linked to [%s]\n", l1, l2);
+			//free(room_lst->links);
+			room_lst->links = ft_strjoin(room_lst->links, tmp);//fix strjoinf
+			room_lst->links = ft_strjoin(room_lst->links, " ");//fix strjoinf
+			printf("links: [%s]\n", room_lst->links);
+			free(tmp);
 		}
 		room_lst = room_lst->next;
 	}
@@ -115,16 +116,19 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 */
 void	ft_print_list(t_room *head)//for debugging purposes
 {
+	char *type;
+
+	printf("\n***LIST***:\n");
 	while (head)
 	{
-		char *type;
 		if (head->type == STRT)
 			type = "STRT";
 		else if (head->type == END)
 			type = "END";
 		else 
 			type = "NRML";
-		printf("node id = [%s] -- [%s]\n", head->id, type);
+		printf("node id: [%s] | type:[%s] | links: [%s]\n", head->id, type, head->links);
 		head = head->next;
 	}
+	printf("\n");
 }
