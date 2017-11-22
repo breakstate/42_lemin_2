@@ -12,6 +12,8 @@
 # define TRUE 1
 # define FALSE 0
 # define UNSET -1
+# define pop populated
+# define w weight
 
 typedef struct		s_room
 {
@@ -26,6 +28,12 @@ typedef struct		s_room
 	int				moved;
 	struct s_room	*next;
 }					t_room;
+
+/*
+**	the_ants_go_marching.c
+*/
+void	ft_resetmoved(t_room *head);
+int		ft_move_ant(t_room *r, t_room *h);
 
 /*
 **	weight.c

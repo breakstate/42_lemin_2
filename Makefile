@@ -4,7 +4,8 @@ SRC = main.c \
 		parse.c \
 		utilities.c \
 		list.c \
-		weight.c
+		weight.c \
+		the_ants_go_marching.c
 
 FLAGS = -Wall -Werror -Wextra -g 
 

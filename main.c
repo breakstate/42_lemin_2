@@ -13,5 +13,7 @@ int		main(void)
 	printf("preweight\n");
 	ft_weight(room_lst, num_ants);
 	ft_print_list(room_lst);
+	while (ft_move_ant(room_lst, room_lst))
+		ft_print_list(room_lst);	
 	return (0);
 }

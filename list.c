@@ -133,7 +133,7 @@ void	ft_print_list(t_room *head)//for debugging purposes
 			type = "END";
 		else 
 			type = "NRML";
-		printf("node id: [%s] | type:[%s] | links: [%s] | weight: [%d]\n", head->id, type, head->links, head->weight);
+		printf("node id: [%s] | type:[%s] | links: [%s] | weight: [%d] | pop = [%d]\n", head->id, type, head->links, head->weight, head->pop);
 		head = head->next;
 	}
 	printf("\n");
