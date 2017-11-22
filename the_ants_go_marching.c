@@ -15,11 +15,30 @@ void	ft_resetmoved(t_room *head)
 	}
 }
 
+void	ft_move_all(t_room *head)
+{
+	t_room	*end_node;
+	t_room	*current;
+
+	current = head;
+	while (current)
+	{
+		if (current->type == END)
+			end_node = current;
+		current = current->next;
+	}
+	while (end_node->populated != 1)
+	{
+		ft_move_cycle(head);
+	}
+}
+
 void	ft_move_cycle(t_room *head)
 {
 	t_room *current;
 	int		moved;
 
+	ft_resetmoved(head);
 	moved = 0;
 	current = head;
 	while (current)
@@ -27,7 +46,7 @@ void	ft_move_cycle(t_room *head)
 		if (current->populated && current->moved == FALSE)
 		{
 			moved += ft_move_ant(current, head);
-			ft_print_list(head);
+			//ft_print_list(head);
 		}
 		current = current->next;
 		if (moved)
@@ -36,6 +55,7 @@ void	ft_move_cycle(t_room *head)
 			current = head;
 		}
 	}
+	printf("end cycle\n\n");
 }
 
 
@@ -65,7 +85,7 @@ int		ft_move_ant(t_room *r, t_room *h)
 			if (ft_strequ(split[i], h->id))
 			{
 				//printf("big if\n");//debug
-				if (h->w < r->w && h->pop == FALSE)
+				if (h->w < r->w && (h->pop == FALSE || h->type == END))//&& h->id != r->prev
 				{
 					h->pop = r->pop;
 					if (r->type == STRT)

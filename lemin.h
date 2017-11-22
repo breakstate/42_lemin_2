@@ -35,7 +35,7 @@ typedef struct		s_room
 void	ft_resetmoved(t_room *head);
 int		ft_move_ant(t_room *r, t_room *h);
 void	ft_move_cycle(t_room *head);
-
+void	ft_move_all(t_room *head);
 
 /*
 **	weight.c
