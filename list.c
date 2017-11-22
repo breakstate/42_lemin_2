@@ -15,6 +15,7 @@
 **	ft_newroom()
 **	mallocs and initializes a new room struct node
 */
+
 t_room	*ft_newroom(char *line, int type)
 {
 	t_room	*new;
@@ -32,6 +33,7 @@ t_room	*ft_newroom(char *line, int type)
 	new->moved = FALSE;
 	new->prev = "";
 	new->next = NULL;
+	return (new);
 }
 
 /*
@@ -39,6 +41,7 @@ t_room	*ft_newroom(char *line, int type)
 **	ft_lstaddf()
 **	adds node to front of list
 */
+
 void	ft_lstaddf(t_room **room_lst, char *line, int type)
 {
 	t_room *temp;
@@ -61,6 +64,7 @@ void	ft_lstaddf(t_room **room_lst, char *line, int type)
 **	ft_lstaddb()
 **	adds node to back of list
 */
+
 void	ft_lstaddb(t_room **room_lst, char *line, int type)
 {
 	t_room *current;
@@ -82,6 +86,7 @@ void	ft_lstaddb(t_room **room_lst, char *line, int type)
 **	ft_addlink()
 **	adds link string to room node
 */
+
 void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 {
 	int		found;
@@ -97,7 +102,7 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 			tmp = ft_strdup(l2);
 			//free(room_lst->links);
 			room_lst->links = ft_strjoin(room_lst->links, tmp);//fix strjoinf
-			room_lst->links = ft_strjoin(room_lst->links, " ");//fix strjoinf
+			room_lst->links = ft_strjoin(room_lst->links, ";");//fix strjoinf
 			printf("links: [%s]\n", room_lst->links);
 			free(tmp);
 		}
@@ -114,6 +119,7 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 **	ft_print_list()
 **	prints list designated by head for debugging purposes
 */
+
 void	ft_print_list(t_room *head)//for debugging purposes
 {
 	char *type;
@@ -127,7 +133,7 @@ void	ft_print_list(t_room *head)//for debugging purposes
 			type = "END";
 		else 
 			type = "NRML";
-		printf("node id: [%s] | type:[%s] | links: [%s]\n", head->id, type, head->links);
+		printf("node id: [%s] | type:[%s] | links: [%s] | weight: [%d]\n", head->id, type, head->links, head->weight);
 		head = head->next;
 	}
 	printf("\n");

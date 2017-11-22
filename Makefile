@@ -3,7 +3,8 @@ NAME = lemin
 SRC = main.c \
 		parse.c \
 		utilities.c \
-		list.c
+		list.c \
+		weight.c
 
 FLAGS = -Wall -Werror -Wextra -g 
 

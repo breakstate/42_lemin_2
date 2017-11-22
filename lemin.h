@@ -11,6 +11,7 @@
 # define END 2
 # define TRUE 1
 # define FALSE 0
+# define UNSET -1
 
 typedef struct		s_room
 {
@@ -25,6 +26,12 @@ typedef struct		s_room
 	int				moved;
 	struct s_room	*next;
 }					t_room;
+
+/*
+**	weight.c
+*/
+void	ft_weight(t_room *room_lst, int num_ants);
+void	ft_setweight(t_room *room, t_room *head, int w);
 
 /*
 **	parse.c

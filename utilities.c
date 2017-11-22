@@ -14,6 +14,7 @@
 **	ft_free_arr()
 **	frees passed in 2D array
 */
+
 void	ft_free_arr(char **arr)//plz test
 {
 	int		i;
@@ -33,6 +34,7 @@ void	ft_free_arr(char **arr)//plz test
 **	ft_error()
 **	takes string to be used as error message, prints and exits
 */
+
 void	ft_error(char *error)
 {
 	ft_putendl(error);
@@ -44,6 +46,7 @@ void	ft_error(char *error)
 **	ft_iscomment()
 **	takes a string and checks if is comment or not
 */
+
 int		ft_iscomment(char *str)
 {
 	if (ft_strlen(str) > 0 && str[0] == '#' && str[1] != '#')
@@ -57,6 +60,7 @@ int		ft_iscomment(char *str)
 **	takes string and checks if valid number
 **	uses ptrarith so test
 */
+
 int		ft_isnumber(char *str)
 {
 	int		i;

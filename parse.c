@@ -14,6 +14,7 @@
 **	count_ants()
 **	gets number of ants from file
 */
+
 int		ft_countants(void)
 {
 	char	*line;
@@ -45,6 +46,7 @@ int		ft_countants(void)
 **	ft_nodehandler()
 **	nodes sent here to be added to list
 */
+
 void	ft_nodehandler(t_room **room_lst, char *line)
 {
 	if (ft_strcmp(line, "##start") == 0)
@@ -72,6 +74,7 @@ void	ft_nodehandler(t_room **room_lst, char *line)
 **	ft_linkhandler()
 **	links sent here to be added to nodes
 */
+
 void	ft_linkhandler(t_room **room_lst, char *line)
 {
 	char	**str_arr;
@@ -92,6 +95,7 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 **	read()
 **	parses rest of file after number of ants
 */
+
 int		ft_read(t_room **room_lst)
 {
 	char	*line;
