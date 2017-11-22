@@ -20,7 +20,7 @@ void	ft_setweight(t_room *room, t_room *head, int w)
 	int		n;
 	int		i;
 
-	if (room->weight != -1 && room->weight <= w)
+	if (room->weight != UNSET && room->weight <= w)
 		return ;
 	room->weight = w;
 	links = ft_strsplitn(room->links, ';', &n);//note: doesn't change per room (only has links of room received as arg)
@@ -55,4 +55,5 @@ void	ft_weight(t_room *room_lst, int num_ants)
 		room_lst = room_lst->next;
 	}
 	head->weight = num_ants;
+	head->populated = 23;
 }
