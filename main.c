@@ -11,7 +11,11 @@ int		main(void)
 	printf("num_ants main = %d\n", num_ants);//debug
 	ft_read(&room_lst);
 	ft_weight(room_lst, num_ants);
-	//ft_print_list(room_lst);	
-	ft_move_all(room_lst);
+	//ft_validate()
+	num_ants = -5;//debug and testing
+	if (num_ants > 0)	
+		ft_move_all(room_lst);
+	else
+		printf("you're running low on ants.\n");
 	return (0);
 }

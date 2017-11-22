@@ -55,5 +55,5 @@ void	ft_weight(t_room *room_lst, int num_ants)
 		room_lst = room_lst->next;
 	}
 	head->weight = num_ants;//alternatively set to like infinity
-	head->populated = 0;//set to num_ants to assign from file
+	head->populated = num_ants;//set to num_ants to assign from file
 }

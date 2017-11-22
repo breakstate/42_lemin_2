@@ -1,13 +1,27 @@
 #include "lemin.h"
 
 /*
-**	4/5
+**	5/5
 **
+**	int		ft_isvalidmove();
 **	void	ft_free_arr();
 **	void	ft_error();
 **	int		ft_iscomment();
 **	int		ft_isnumber();
 */
+
+/*
+**===================================================================
+**	ft_isvalidmove()
+**	verifies if move from src to dst is valid given conditions
+*/
+
+int		ft_isvalidmove(t_room *dest, t_room *src)
+{
+	if (dest->w < src->w && (dest->pop == 0 || dest->type == END))
+		return (1);
+	return (0);
+}
 
 /*
 **===================================================================
