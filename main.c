@@ -14,8 +14,9 @@ int		main(void)
 	//ft_validate()
 	num_ants = 23;//debug and testing
 	if (num_ants > 0)	
-		ft_move_all(room_lst);
+		ft_moveall(room_lst);
 	else
 		printf("you're running low on ants.\n");
 	return (0);
+	ft_freelist(room_lst);
 }

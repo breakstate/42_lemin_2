@@ -31,10 +31,11 @@ void	ft_resetmoved(t_room *head)
 **	highest level loop, calls cycle function until ultimate end cond
 */
 
-void	ft_move_all(t_room *head)
+void	ft_moveall(t_room *head)
 {
 	t_room	*end_node;
 	t_room	*current;
+	int		num_cycles = 0;//debug
 
 	current = head;
 	while (current)
@@ -45,8 +46,9 @@ void	ft_move_all(t_room *head)
 	}
 	while (end_node->populated != 1)
 	{
-		ft_move_cycle(head);
+		ft_movecycle(head, &num_cycles);
 	}
+	printf("Completed in [%d] cycles.\n", num_cycles);
 }
 
 /*
@@ -55,7 +57,7 @@ void	ft_move_all(t_room *head)
 **	middle level loop, calls single move function until all possible single moves made
 */
 
-void	ft_move_cycle(t_room *head)
+void	ft_movecycle(t_room *head, int *num_cycles)//int = debug
 {
 	t_room *c;
 	int		moved;
@@ -67,7 +69,7 @@ void	ft_move_cycle(t_room *head)
 	{
 		if (c->populated && c->moved == FALSE)
 		{
-			moved += ft_move_ant(c, head);
+			moved += ft_moveant(c, head);
 		}
 		c = c->next;
 		if (moved)
@@ -76,7 +78,8 @@ void	ft_move_cycle(t_room *head)
 			c = head;
 		}
 	}
-	printf("end cycle\n\n");
+	(*num_cycles)++;
+	printf("cycle: [%d]\n\n", *num_cycles);
 }
 
 /*
@@ -108,7 +111,7 @@ void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 **	(split over two functions)
 */
 
-int		ft_move_ant(t_room *r, t_room *h)
+int		ft_moveant(t_room *r, t_room *h)
 {
 	char	**split;
 	int		moved;
@@ -123,7 +126,7 @@ int		ft_move_ant(t_room *r, t_room *h)
 		{
 			if (ft_strequ(split[i], h->id))
 			{
-				if (ft_isvalidmove(h, r))//h->w < r->w && (h->pop == FALSE || h->type == END))//&& h->id != r->prev
+				if (ft_isvalidmove(h, r))
 				{
 					ft_ifvalidmove(h, r, &moved);
 					printf("ant[%d] moved from room[%s] to room[%s]\n", h->pop, r->id, h->id);
@@ -133,6 +136,6 @@ int		ft_move_ant(t_room *r, t_room *h)
 		i = -1;
 		h = h->next;
 	}
-	ft_free_arr(split);
+	ft_freearr(split);
 	return (moved);
 }

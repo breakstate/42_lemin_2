@@ -33,7 +33,7 @@ void	ft_setweight(t_room *room, t_room *head, int w)
 				ft_setweight(room, head, w + 1);
 		room = room->next;
 	}
-	ft_free_arr(links);
+	ft_freearr(links);
 }
 
 /*

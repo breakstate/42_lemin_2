@@ -30,7 +30,7 @@ int		ft_isvalidmove(t_room *dest, t_room *src)
 **	frees passed in 2D array
 */
 
-void	ft_free_arr(char **arr)//plz test
+void	ft_freearr(char **arr)//plz test
 {
 	int		i;
 

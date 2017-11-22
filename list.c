@@ -31,7 +31,7 @@ t_room	*ft_newroom(char *line, int type)
 	new->populated = FALSE;
 	new->links = ft_strnew(0);
 	new->moved = FALSE;
-	new->prev = "";
+	new->prev = "";//why
 	new->next = NULL;
 	return (new);
 }

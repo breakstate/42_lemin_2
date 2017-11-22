@@ -86,7 +86,7 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 	//check_str_arr;
 	ft_addlink(*room_lst, str_arr[0], str_arr[1]);
 	ft_addlink(*room_lst, str_arr[1], str_arr[0]);
-	ft_free_arr(str_arr);
+	ft_freearr(str_arr);
 	str_arr = NULL;
 }
 

@@ -33,10 +33,10 @@ typedef struct		s_room
 **	the_ants_go_marching.c
 */
 void	ft_resetmoved(t_room *head);
-void	ft_move_all(t_room *head);
-void	ft_move_cycle(t_room *head);
+void	ft_moveall(t_room *head);
+void	ft_movecycle(t_room *head, int *num_cycles);
 void	ft_ifvalidmove(t_room *h, t_room *r, int *moved);
-int		ft_move_ant(t_room *r, t_room *h);
+int		ft_moveant(t_room *r, t_room *h);
 
 /*
 **	weight.c
@@ -55,11 +55,16 @@ int		ft_read(t_room **room_lst);
 /*
 **	utilities.c
 */
-void	ft_free_arr(char **arr);
+int		ft_isvalidmove(t_room *dest, t_room *src);
+void	ft_freearr(char **arr);
 void	ft_error(char *error);
 int		ft_iscomment(char *str);
 int		ft_isnumber(char *str);
-int		ft_isvalidmove(t_room *dest, t_room *src);
+
+/*
+**	utilities_2.c
+*/
+void	ft_freelist(t_room *room_lst);
 
 /*
 **	list.c
