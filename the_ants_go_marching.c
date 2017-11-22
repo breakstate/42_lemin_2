@@ -15,12 +15,27 @@ void	ft_resetmoved(t_room *head)
 	}
 }
 
-void	ft_cycle(t_room *head)
+void	ft_move_cycle(t_room *head)
 {
+	t_room *current;
+	int		moved;
 
-	//bubble sort flags
-	//end cycle when all possible moves made
-	//then go again.
+	moved = 0;
+	current = head;
+	while (current)
+	{
+		if (current->populated && current->moved == FALSE)
+		{
+			moved += ft_move_ant(current, head);
+			ft_print_list(head);
+		}
+		current = current->next;
+		if (moved)
+		{
+			moved = FALSE;
+			current = head;
+		}
+	}
 }
 
 
@@ -57,7 +72,8 @@ int		ft_move_ant(t_room *r, t_room *h)
 						r->pop--;
 					else
 						r->pop = 0;
-					h->moved = TRUE;
+					if (h->type == NRML)	
+						h->moved = TRUE;
 					h->prev = r->id;
 					moved = TRUE;
 					printf("ant[%d] moved from room[%s] to room[%s]\n", h->pop, r->id, h->id);
