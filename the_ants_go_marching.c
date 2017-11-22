@@ -57,23 +57,23 @@ void	ft_move_all(t_room *head)
 
 void	ft_move_cycle(t_room *head)
 {
-	t_room *current;
+	t_room *c;
 	int		moved;
 
 	ft_resetmoved(head);
 	moved = 0;
-	current = head;
-	while (current)
+	c = head;
+	while (c)
 	{
-		if (current->populated && current->moved == FALSE)
+		if (c->populated && c->moved == FALSE)
 		{
-			moved += ft_move_ant(current, head);
+			moved += ft_move_ant(c, head);
 		}
-		current = current->next;
+		c = c->next;
 		if (moved)
 		{
-			moved = FALSE;
-			current = head;
+			moved = 0;
+			c = head;
 		}
 	}
 	printf("end cycle\n\n");
@@ -92,8 +92,10 @@ void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 		r->pop--;
 	else
 		r->pop = 0;
-	if (h->type == NRML)	
+	if (h->type == NRML)
+	{	
 		h->moved = TRUE;
+	}
 	h->prev = r->id;
 	*moved = TRUE;
 }
@@ -118,13 +120,17 @@ int		ft_move_ant(t_room *r, t_room *h)
 	while (h && !moved)
 	{
 		while (split[++i] && !moved)
+		{
 			if (ft_strequ(split[i], h->id))
+			{
 				if (ft_isvalidmove(h, r))//h->w < r->w && (h->pop == FALSE || h->type == END))//&& h->id != r->prev
 				{
 					ft_ifvalidmove(h, r, &moved);
 					printf("ant[%d] moved from room[%s] to room[%s]\n", h->pop, r->id, h->id);
 				}
-		i = 0;
+			}
+		}
+		i = -1;
 		h = h->next;
 	}
 	ft_free_arr(split);

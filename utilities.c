@@ -18,7 +18,8 @@
 
 int		ft_isvalidmove(t_room *dest, t_room *src)
 {
-	if (dest->w < src->w && (dest->pop == 0 || dest->type == END))
+	if (dest->w < src->w && (dest->pop == 0 || dest->type == END)
+			&& ft_strequ(dest->id, src->prev) == 0)
 		return (1);
 	return (0);
 }
