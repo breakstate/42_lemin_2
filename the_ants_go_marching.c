@@ -31,7 +31,7 @@ void	ft_resetmoved(t_room *head)
 **	highest level loop, calls cycle function until ultimate end cond
 */
 
-void	ft_moveall(t_room *head)
+void	ft_moveall(t_room *head, int num_ants)
 {
 	t_room	*end_node;
 	t_room	*current;
@@ -44,10 +44,11 @@ void	ft_moveall(t_room *head)
 			end_node = current;
 		current = current->next;
 	}
-	while (end_node->populated != 1)
+	while (end_node->populated != num_ants)// && num_cycles < 15)//debug
 	{
 		ft_movecycle(head, &num_cycles);
 	}
+	//ft_print_list(head);
 	printf("Completed in [%d] cycles.\n", num_cycles);
 }
 
@@ -79,7 +80,8 @@ void	ft_movecycle(t_room *head, int *num_cycles)//int = debug
 		}
 	}
 	(*num_cycles)++;
-	printf("cycle: [%d]\n\n", *num_cycles);
+	ft_putstr("\n");
+	//printf("cycle: [%d]\n\n", *num_cycles);
 }
 
 /*
@@ -90,7 +92,10 @@ void	ft_movecycle(t_room *head, int *num_cycles)//int = debug
 
 void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 {
-	h->pop = r->pop;
+	if (h->type != END)
+		h->pop = r->pop;
+	else
+		h->pop++;
 	if (r->type == STRT)
 		r->pop--;
 	else
@@ -99,7 +104,6 @@ void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 	{	
 		h->moved = TRUE;
 	}
-	h->prev = r->id;
 	*moved = TRUE;
 }
 
@@ -109,6 +113,7 @@ void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 **	receives populated room and head of list
 **	moves single ant to valid room
 **	(split over two functions)
+**	h is dest, r is src
 */
 
 int		ft_moveant(t_room *r, t_room *h)
@@ -129,6 +134,7 @@ int		ft_moveant(t_room *r, t_room *h)
 				if (ft_isvalidmove(h, r))
 				{
 					ft_ifvalidmove(h, r, &moved);
+					ft_printant(h, r);
 					printf("ant[%d] moved from room[%s] to room[%s]\n", h->pop, r->id, h->id);
 				}
 			}

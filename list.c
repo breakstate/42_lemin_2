@@ -19,7 +19,7 @@
 t_room	*ft_newroom(char *line, int type)
 {
 	t_room	*new;
-	char 	**split;
+	char	**split;
 	int		split_num;
 
 	new = (t_room *)malloc(sizeof(t_room));
@@ -31,7 +31,6 @@ t_room	*ft_newroom(char *line, int type)
 	new->populated = FALSE;
 	new->links = ft_strnew(0);
 	new->moved = FALSE;
-	new->prev = "";//why
 	new->next = NULL;
 	return (new);
 }
@@ -91,9 +90,8 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 {
 	int		found;
 	char	*tmp;
-	
+
 	found = FALSE;
-	
 	while (room_lst)
 	{
 		if (ft_strcmp(room_lst->id, l1) == 0)
@@ -109,7 +107,7 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 	}
 	if (found == FALSE)
 	{
-		ft_error("Error: link erorr");
+		ft_error("Error: link error");
 	}
 }
 
@@ -132,8 +130,8 @@ void	ft_print_list(t_room *head)//for debugging purposes
 			type = "END";
 		else 
 			type = "NRML";
-		printf("node id: [%s] | type:[%s] | links: [%s] | weight: [%d] | pop = [%d]\n", head->id, type, head->links, head->weight, head->pop);
+		printf("node id: [%s] | type:[%s] | weight: [%d] | pop = [%d] | links: [%s]\n", head->id, type, head->weight, head->pop, head->links);
 		head = head->next;
 	}
-	printf("\n");
+	printf("\ndone\n");
 }

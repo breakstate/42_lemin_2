@@ -18,7 +18,6 @@
 typedef struct		s_room
 {
 	char			*id;
-	char			*prev;
 	int				type;
 	int				x;
 	int				y;
@@ -33,7 +32,7 @@ typedef struct		s_room
 **	the_ants_go_marching.c
 */
 void	ft_resetmoved(t_room *head);
-void	ft_moveall(t_room *head);
+void	ft_moveall(t_room *head, int num_ants);
 void	ft_movecycle(t_room *head, int *num_cycles);
 void	ft_ifvalidmove(t_room *h, t_room *r, int *moved);
 int		ft_moveant(t_room *r, t_room *h);
@@ -81,6 +80,7 @@ void	ft_print_list(t_room *head);//debug
 **	val_and_out.c
 */
 int		ft_startend(t_room *room_lst);
+void	ft_printant(t_room *dest, t_room *src);
 
 #endif
 

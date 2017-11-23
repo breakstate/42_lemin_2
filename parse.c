@@ -107,10 +107,10 @@ int		ft_read(t_room **room_lst)
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		ft_putendl(line);//print		
-		while (ft_iscomment(line))
+		while (ft_iscomment(line) && ret > 0)
 		{
 			free(line);
-			get_next_line(0, &line);
+			ret = get_next_line(0, &line);
 			ft_putendl(line);//print	
 		}
 		if (!ft_strchr(line, '-'))

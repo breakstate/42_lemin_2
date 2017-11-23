@@ -62,7 +62,7 @@ void	ft_weight(t_room *room_lst, int num_ants)
 	printf("head weight = [%d]\n", head->weight);
 	if (head->type == STRT)
 	{
-		head->weight = 1000;
+		//head->weight = 1000;
 		head->populated = num_ants;
 	}
 	else

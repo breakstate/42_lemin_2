@@ -7,6 +7,19 @@
 */
 
 /*
+**
+*/
+
+void	ft_printant(t_room *dest, t_room *src)
+{
+	ft_putstr("L");
+	ft_putnbr(dest->pop);
+	ft_putstr("-");
+	ft_putstr(dest->id);
+	ft_putstr(" ");
+}
+
+/*
 **===================================================================
 **	ft_startend()
 **	checks if start and end node exist and are not duplicates
