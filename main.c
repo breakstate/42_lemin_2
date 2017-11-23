@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/23 15:57:14 by bmoodley          #+#    #+#             */
+/*   Updated: 2017/11/23 15:58:18 by bmoodley         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-int		main(void)
+int			main(void)
 {
 	t_room	*room_lst;
 	int		num_ants;
@@ -8,19 +20,15 @@ int		main(void)
 	room_lst = NULL;
 	if ((num_ants = ft_countants()) < 1)
 		return (-1);
-	printf("num_ants main = %d\n", num_ants);//debug
+	ft_putstr("num_ants main = ");
+	ft_putnbr_endl(num_ants);
 	ft_read(&room_lst);
 	ft_startend(room_lst);
-	printf("after ft_startend\n");
 	ft_weight(room_lst, num_ants);
-	printf("after weight\n");
-	
-	ft_print_list(room_lst);
-
-	if (num_ants > 0)	
+	if (num_ants > 0)
 		ft_moveall(room_lst, num_ants);
 	else
-		printf("you're running low on ants.\n");
-	return (0);
+		ft_putstr("Error: you're running low on ants.\n");
 	ft_freelist(room_lst);
+	return (0);
 }

@@ -19,7 +19,7 @@ all: $(NAME)
 
 $(NAME):
 	$(MAKE) -C ./libft 
-	gcc -o $(NAME) $(SRC) $(LIBFT)
+	gcc -g -o $(NAME) $(SRC) $(LIBFT)
 
 clean: 
 	rm -f $(NAME)

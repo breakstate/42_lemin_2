@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/23 15:58:44 by bmoodley          #+#    #+#             */
+/*   Updated: 2017/11/23 16:00:17 by bmoodley         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 /*
@@ -16,7 +28,7 @@
 **	mallocs and initializes a new room struct node
 */
 
-t_room	*ft_newroom(char *line, int type)
+t_room		*ft_newroom(char *line, int type)
 {
 	t_room	*new;
 	char	**split;
@@ -32,6 +44,7 @@ t_room	*ft_newroom(char *line, int type)
 	new->links = ft_strnew(0);
 	new->moved = FALSE;
 	new->next = NULL;
+	ft_freearr(split);
 	return (new);
 }
 
@@ -98,9 +111,8 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 		{
 			found = TRUE;
 			tmp = ft_strdup(l2);
-			room_lst->links = ft_strjoin(room_lst->links, tmp);//fix strjoinf
-			room_lst->links = ft_strjoin(room_lst->links, ";");//fix strjoinf
-			printf("links: [%s]\n", room_lst->links);
+			room_lst->links = ft_strjoinf(room_lst->links, tmp);//fix strjoinf
+			room_lst->links = ft_strjoinf(room_lst->links, ";");//fix strjoinf
 			free(tmp);
 		}
 		room_lst = room_lst->next;
@@ -121,7 +133,7 @@ void	ft_print_list(t_room *head)//for debugging purposes
 {
 	char *type;
 
-	printf("\n***LIST***:\n");
+	//printf("\n***LIST***:\n");
 	while (head)
 	{
 		if (head->type == STRT)
@@ -130,8 +142,8 @@ void	ft_print_list(t_room *head)//for debugging purposes
 			type = "END";
 		else 
 			type = "NRML";
-		printf("node id: [%s] | type:[%s] | weight: [%d] | pop = [%d] | links: [%s]\n", head->id, type, head->weight, head->pop, head->links);
+		//printf("node id: [%s] | type:[%s] | weight: [%d] | pop = [%d] | links: [%s]\n", head->id, type, head->weight, head->pop, head->links);
 		head = head->next;
 	}
-	printf("\ndone\n");
+	//printf("\ndone\n");
 }

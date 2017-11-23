@@ -59,7 +59,6 @@ void	ft_weight(t_room *room_lst, int num_ants)
 		ft_freelist(head);
 		ft_error("Error: There is no viable path.\n");
 	}
-	printf("head weight = [%d]\n", head->weight);
 	if (head->type == STRT)
 	{
 		//head->weight = 1000;

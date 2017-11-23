@@ -49,7 +49,7 @@ void	ft_moveall(t_room *head, int num_ants)
 		ft_movecycle(head, &num_cycles);
 	}
 	//ft_print_list(head);
-	printf("Completed in [%d] cycles.\n", num_cycles);
+	//printf("Completed in [%d] cycles.\n", num_cycles);
 }
 
 /*
@@ -135,7 +135,7 @@ int		ft_moveant(t_room *r, t_room *h)
 				{
 					ft_ifvalidmove(h, r, &moved);
 					ft_printant(h, r);
-					printf("ant[%d] moved from room[%s] to room[%s]\n", h->pop, r->id, h->id);
+					//printf("ant[%d] moved from room[%s] to room[%s]\n", h->pop, r->id, h->id);
 				}
 			}
 		}
