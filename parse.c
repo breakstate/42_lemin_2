@@ -22,7 +22,7 @@ int		ft_countants(void)
 
 	line = NULL;
 	if (get_next_line(0, &line) < 1)
-		ft_putendl("ERROR1");//does not free or exit
+		ft_error("Error: invalid filedescriptor.");
 	while (ft_iscomment(line))
 	{
 		ft_putendl(line);
@@ -30,11 +30,11 @@ int		ft_countants(void)
 		line = NULL;
 		get_next_line(0, &line);
 	}
-	if (!ft_isnumber(line) || ft_atoi(line) < 1)
+	if (ft_atoi(line) < 1)
 	{
 		free(line);
-		ft_putendl("ERROR2");//error, invalid number of ants
-		return (-1);
+		ft_putendl("Error: invalid number of ants.");
+		exit(-1);
 	}
 	num_ants = ft_atoi(line);
 	free(line);
@@ -82,8 +82,11 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 
 	str_arr = ft_strsplitn(line, '-', &str_count);
 	if (str_count != 2)
-		ft_error("Error: Format error");
-	//check_str_arr;
+	{
+		free(line);
+		ft_freearr(str_arr);
+		ft_errorlist("Error: link format error.", *room_lst);
+	}
 	ft_addlink(*room_lst, str_arr[0], str_arr[1]);
 	ft_addlink(*room_lst, str_arr[1], str_arr[0]);
 	ft_freearr(str_arr);

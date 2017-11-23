@@ -10,9 +10,8 @@ int		main(void)
 		return (-1);
 	printf("num_ants main = %d\n", num_ants);//debug
 	ft_read(&room_lst);
+	ft_startend(room_lst);
 	ft_weight(room_lst, num_ants);
-	//ft_validate()
-	num_ants = 23;//debug and testing
 	if (num_ants > 0)	
 		ft_moveall(room_lst);
 	else

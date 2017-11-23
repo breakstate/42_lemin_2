@@ -54,6 +54,20 @@ void	ft_weight(t_room *room_lst, int num_ants)
 			ft_setweight(room_lst, head, 0);
 		room_lst = room_lst->next;
 	}
-	head->weight = num_ants;//alternatively set to like infinity
-	head->populated = num_ants;//set to num_ants to assign from file
+	if (head->weight == -1 && head->type == STRT)
+	{
+		ft_freelist(head);
+		ft_error("Error: There is no viable path.\n");
+	}
+	printf("head weight = [%d]\n", head->weight);
+	if (head->type == STRT)
+	{
+		head->weight = 1000;
+		head->populated = num_ants;
+	}
+	else
+	{
+		ft_freelist(room_lst);
+		ft_error("Error: No start node.\n");
+	}
 }

@@ -25,3 +25,16 @@ void	ft_freelist(t_room *room_lst)
 		room_lst = temp;
 	}
 }
+
+/*
+**===================================================================
+**	ft_error()
+**	takes string to be used as error message, prints and exits
+*/
+
+void	ft_errorlist(char *error, t_room *head)
+{
+	ft_putendl(error);
+	ft_freelist(head);
+	exit(-1);
+}

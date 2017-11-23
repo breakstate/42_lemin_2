@@ -100,7 +100,6 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 		{
 			found = TRUE;
 			tmp = ft_strdup(l2);
-			//free(room_lst->links);
 			room_lst->links = ft_strjoin(room_lst->links, tmp);//fix strjoinf
 			room_lst->links = ft_strjoin(room_lst->links, ";");//fix strjoinf
 			printf("links: [%s]\n", room_lst->links);

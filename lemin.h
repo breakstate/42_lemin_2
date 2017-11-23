@@ -65,6 +65,8 @@ int		ft_isnumber(char *str);
 **	utilities_2.c
 */
 void	ft_freelist(t_room *room_lst);
+void	ft_errorlist(char *error, t_room *head);
+
 
 /*
 **	list.c
@@ -75,6 +77,10 @@ void	ft_lstaddb(t_room **room_lst, char *line, int type);
 void	ft_addlink(t_room *room_lst, char *l1, char *l2);
 void	ft_print_list(t_room *head);//debug
 
+/*
+**	val_and_out.c
+*/
+int		ft_startend(t_room *room_lst);
 
 #endif
 
