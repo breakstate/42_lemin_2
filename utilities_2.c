@@ -13,9 +13,10 @@
 #include "lemin.h"
 
 /*
-**	1/5
+**	2/5
 **
 **	ft_free_list();
+**	ft_error();
 */
 
 /*

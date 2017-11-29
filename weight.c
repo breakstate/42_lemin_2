@@ -70,7 +70,7 @@ void	ft_weight(t_room *room_lst, int num_ants)
 	if (head->weight == -1 && head->type == STRT)
 	{
 		ft_freelist(head);
-		ft_error("Error: There is no viable path.\n");
+		ft_error("Error: There is no viable path.");
 	}
 	if (head->type == STRT)
 	{
@@ -79,6 +79,6 @@ void	ft_weight(t_room *room_lst, int num_ants)
 	else
 	{
 		ft_freelist(room_lst);
-		ft_error("Error: No start node.\n");
+		ft_error("Error: No start node.");
 	}
 }

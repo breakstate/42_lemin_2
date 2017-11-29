@@ -93,7 +93,7 @@ void		ft_lstaddb(t_room **room_lst, char *line, int type)
 	if (split_num != 3)
 	{
 		ft_freearr(split);
-		ft_errorlist("Error: room format error.", *room_lst);
+		ft_errorlist("Error: input format error.", *room_lst);
 	}
 	current = *room_lst;
 	if (*room_lst)

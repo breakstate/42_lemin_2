@@ -6,7 +6,7 @@
 /*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 10:38:55 by bmoodley          #+#    #+#             */
-/*   Updated: 2017/11/29 10:40:19 by bmoodley         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:21:50 by bmoodley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			ft_isvalidmove(t_room *dest, t_room *src)
 **	frees passed in 2D array
 */
 
-void		ft_freearr(char **arr)//plz test
+void		ft_freearr(char **arr)
 {
 	int		i;
 
