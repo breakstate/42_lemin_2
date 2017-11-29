@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   the_ants_go_marching.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/29 10:36:50 by bmoodley          #+#    #+#             */
+/*   Updated: 2017/11/29 10:38:26 by bmoodley         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 /*
@@ -16,7 +28,7 @@
 **	resets all ->moved values to 0
 */
 
-void	ft_resetmoved(t_room *head)
+void		ft_resetmoved(t_room *head)
 {
 	while (head)
 	{
@@ -31,11 +43,10 @@ void	ft_resetmoved(t_room *head)
 **	highest level loop, calls cycle function until ultimate end cond
 */
 
-void	ft_moveall(t_room *head, int num_ants)
+void		ft_moveall(t_room *head, int num_ants)
 {
 	t_room	*end_node;
 	t_room	*current;
-	int		num_cycles = 0;//debug
 
 	current = head;
 	while (current)
@@ -44,23 +55,22 @@ void	ft_moveall(t_room *head, int num_ants)
 			end_node = current;
 		current = current->next;
 	}
-	while (end_node->populated != num_ants)// && num_cycles < 15)//debug
+	while (end_node->populated != num_ants)
 	{
-		ft_movecycle(head, &num_cycles);
+		ft_movecycle(head);
 	}
-	//ft_print_list(head);
-	//printf("Completed in [%d] cycles.\n", num_cycles);
 }
 
 /*
 **===================================================================
 **	ft_move_cycle()
-**	middle level loop, calls single move function until all possible single moves made
+**	middle level loop,
+**	calls single move function until all possible single moves made
 */
 
-void	ft_movecycle(t_room *head, int *num_cycles)//int = debug
+void		ft_movecycle(t_room *head)
 {
-	t_room *c;
+	t_room	*c;
 	int		moved;
 
 	ft_resetmoved(head);
@@ -79,9 +89,7 @@ void	ft_movecycle(t_room *head, int *num_cycles)//int = debug
 			c = head;
 		}
 	}
-	(*num_cycles)++;
 	ft_putstr("\n");
-	//printf("cycle: [%d]\n\n", *num_cycles);
 }
 
 /*
@@ -90,7 +98,7 @@ void	ft_movecycle(t_room *head, int *num_cycles)//int = debug
 **	outsources the following code for line reasons if ft_isvalid returns true
 */
 
-void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
+void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 {
 	if (h->type != END)
 		h->pop = r->pop;
@@ -101,7 +109,7 @@ void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 	else
 		r->pop = 0;
 	if (h->type == NRML)
-	{	
+	{
 		h->moved = TRUE;
 	}
 	*moved = TRUE;
@@ -116,7 +124,7 @@ void	ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 **	h is dest, r is src
 */
 
-int		ft_moveant(t_room *r, t_room *h)
+int			ft_moveant(t_room *r, t_room *h)
 {
 	char	**split;
 	int		moved;
@@ -135,7 +143,6 @@ int		ft_moveant(t_room *r, t_room *h)
 				{
 					ft_ifvalidmove(h, r, &moved);
 					ft_printant(h, r);
-					//printf("ant[%d] moved from room[%s] to room[%s]\n", h->pop, r->id, h->id);
 				}
 			}
 		}

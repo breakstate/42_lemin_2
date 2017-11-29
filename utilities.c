@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilities.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/29 10:38:55 by bmoodley          #+#    #+#             */
+/*   Updated: 2017/11/29 10:40:19 by bmoodley         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 /*
@@ -16,7 +28,7 @@
 **	verifies if move from src to dst is valid given conditions
 */
 
-int		ft_isvalidmove(t_room *dest, t_room *src)
+int			ft_isvalidmove(t_room *dest, t_room *src)
 {
 	if (dest->w < src->w && (dest->pop == 0 || dest->type == END))
 		return (1);
@@ -29,7 +41,7 @@ int		ft_isvalidmove(t_room *dest, t_room *src)
 **	frees passed in 2D array
 */
 
-void	ft_freearr(char **arr)//plz test
+void		ft_freearr(char **arr)//plz test
 {
 	int		i;
 
@@ -39,9 +51,9 @@ void	ft_freearr(char **arr)//plz test
 		free(arr[i]);
 		i++;
 	}
-	free(arr[i]);	
+	free(arr[i]);
 	free(arr);
-}	
+}
 
 /*
 **===================================================================
@@ -49,7 +61,7 @@ void	ft_freearr(char **arr)//plz test
 **	takes string to be used as error message, prints and exits
 */
 
-void	ft_error(char *error)
+void		ft_error(char *error)
 {
 	ft_putendl(error);
 	exit(-1);
@@ -61,11 +73,11 @@ void	ft_error(char *error)
 **	takes a string and checks if is comment or not
 */
 
-int		ft_iscomment(char *str)
+int			ft_iscomment(char *str)
 {
 	if (ft_strlen(str) > 0 && str[0] == '#' && str[1] != '#')
 		return (1);
-	return (0); 
+	return (0);
 }
 
 /*
@@ -75,9 +87,10 @@ int		ft_iscomment(char *str)
 **	uses ptrarith so test
 */
 
-int		ft_isnumber(char *str)
+int			ft_isnumber(char *str)
 {
 	int		i;
+
 	i = 0;
 	while (str[i])
 	{

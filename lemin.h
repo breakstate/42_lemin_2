@@ -33,7 +33,7 @@ typedef struct		s_room
 */
 void	ft_resetmoved(t_room *head);
 void	ft_moveall(t_room *head, int num_ants);
-void	ft_movecycle(t_room *head, int *num_cycles);
+void	ft_movecycle(t_room *head);
 void	ft_ifvalidmove(t_room *h, t_room *r, int *moved);
 int		ft_moveant(t_room *r, t_room *h);
 
@@ -70,7 +70,7 @@ void	ft_errorlist(char *error, t_room *head);
 /*
 **	list.c
 */
-t_room	*ft_newroom(char *line, int type);
+t_room	*ft_newroom(char **split, int type);
 void	ft_lstaddf(t_room **room_lst, char *line, int type);
 void	ft_lstaddb(t_room **room_lst, char *line, int type);
 void	ft_addlink(t_room *room_lst, char *l1, char *l2);

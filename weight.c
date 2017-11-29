@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   weight.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/29 10:43:06 by bmoodley          #+#    #+#             */
+/*   Updated: 2017/11/29 10:43:07 by bmoodley         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 /*
@@ -23,7 +35,7 @@ void	ft_setweight(t_room *room, t_room *head, int w)
 	if (room->weight != UNSET && room->weight <= w)
 		return ;
 	room->weight = w;
-	links = ft_strsplitn(room->links, ';', &n);//note: doesn't change per room (only has links of room received as arg)
+	links = ft_strsplitn(room->links, ';', &n);
 	room = head;
 	while (room)
 	{
@@ -41,6 +53,7 @@ void	ft_setweight(t_room *room, t_room *head, int w)
 **	ft_weight()
 **	sends end room as starting point to ft_setweight, as well as head of list
 **	as well as initial weight of end (0)
+**	set start weight used to be 1000
 */
 
 void	ft_weight(t_room *room_lst, int num_ants)
@@ -61,7 +74,6 @@ void	ft_weight(t_room *room_lst, int num_ants)
 	}
 	if (head->type == STRT)
 	{
-		//head->weight = 1000;
 		head->populated = num_ants;
 	}
 	else

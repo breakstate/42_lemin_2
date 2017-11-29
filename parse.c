@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/29 10:35:02 by bmoodley          #+#    #+#             */
+/*   Updated: 2017/11/29 10:36:07 by bmoodley         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 /*
@@ -15,7 +27,7 @@
 **	gets number of ants from file
 */
 
-int		ft_countants(void)
+int			ft_countants(void)
 {
 	char	*line;
 	int		num_ants;
@@ -47,25 +59,30 @@ int		ft_countants(void)
 **	nodes sent here to be added to list
 */
 
-void	ft_nodehandler(t_room **room_lst, char *line)
+void		ft_nodehandler(t_room **room_lst, char *line)
 {
 	if (ft_strcmp(line, "##start") == 0)
 	{
 		get_next_line(0, &line);
 		ft_lstaddf(room_lst, line, STRT);
-		ft_putendl(line);//print
+		ft_putendl(line);
 		free(line);
 	}
 	else if (ft_strcmp(line, "##end") == 0)
 	{
 		get_next_line(0, &line);
 		ft_lstaddb(room_lst, line, END);
-		ft_putendl(line);//print
+		ft_putendl(line);
 		free(line);
 	}
-	else 
+	else if (ft_strlen(line) > 0)
 	{
 		ft_lstaddb(room_lst, line, NRML);
+	}
+	else
+	{
+		free(line);
+		ft_errorlist("Error: empty line.", *room_lst);
 	}
 }
 
@@ -75,7 +92,7 @@ void	ft_nodehandler(t_room **room_lst, char *line)
 **	links sent here to be added to nodes
 */
 
-void	ft_linkhandler(t_room **room_lst, char *line)
+void		ft_linkhandler(t_room **room_lst, char *line)
 {
 	char	**str_arr;
 	int		str_count;
@@ -99,19 +116,19 @@ void	ft_linkhandler(t_room **room_lst, char *line)
 **	parses rest of file after number of ants
 */
 
-int		ft_read(t_room **room_lst)
+int			ft_read(t_room **room_lst)
 {
 	char	*line;
 	int		ret;
 
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
-		ft_putendl(line);//print		
+		ft_putendl(line);
 		while (ft_iscomment(line) && ret > 0)
 		{
 			free(line);
 			ret = get_next_line(0, &line);
-			ft_putendl(line);//print	
+			ft_putendl(line);
 		}
 		if (!ft_strchr(line, '-'))
 			ft_nodehandler(room_lst, line);

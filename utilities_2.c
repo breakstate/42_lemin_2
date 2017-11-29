@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilities_2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/29 10:41:02 by bmoodley          #+#    #+#             */
+/*   Updated: 2017/11/29 10:41:05 by bmoodley         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 /*
@@ -12,7 +24,7 @@
 **	frees linked list
 */
 
-void	ft_freelist(t_room *room_lst)
+void		ft_freelist(t_room *room_lst)
 {
 	t_room	*temp;
 
@@ -32,7 +44,7 @@ void	ft_freelist(t_room *room_lst)
 **	takes string to be used as error message, prints and exits
 */
 
-void	ft_errorlist(char *error, t_room *head)
+void		ft_errorlist(char *error, t_room *head)
 {
 	ft_putendl(error);
 	ft_freelist(head);
