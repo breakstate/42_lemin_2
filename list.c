@@ -120,6 +120,8 @@ void	ft_addlink(t_room *room_lst, char *l1, char *l2)
 	if (found == FALSE)
 	{
 		ft_error("Error: link error");
+		ft_freelist(room_lst);
+		exit(-1);
 	}
 }
 
