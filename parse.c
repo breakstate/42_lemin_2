@@ -59,25 +59,25 @@ int			ft_countants(void)
 **	nodes sent here to be added to list
 */
 
-void		ft_nodehandler(t_room **room_lst, char *line)
+void		ft_nodehandler(t_room **room_lst, char *line, int num_ants)
 {
 	if (ft_strcmp(line, "##start") == 0)
 	{
 		get_next_line(0, &line);
-		ft_lstaddf(room_lst, line, STRT);
+		ft_lstaddf(room_lst, line, STRT, num_ants);
 		ft_putendl(line);
 		free(line);
 	}
 	else if (ft_strcmp(line, "##end") == 0)
 	{
 		get_next_line(0, &line);
-		ft_lstaddb(room_lst, line, END);
+		ft_lstaddb(room_lst, line, END, num_ants);
 		ft_putendl(line);
 		free(line);
 	}
 	else if (ft_strlen(line) > 0)
 	{
-		ft_lstaddb(room_lst, line, NRML);
+		ft_lstaddb(room_lst, line, NRML, num_ants);
 	}
 	else
 	{
@@ -116,7 +116,7 @@ void		ft_linkhandler(t_room **room_lst, char *line)
 **	parses rest of file after number of ants
 */
 
-int			ft_read(t_room **room_lst)
+int			ft_read(t_room **room_lst, int num_ants)
 {
 	char	*line;
 	int		ret;
@@ -131,7 +131,7 @@ int			ft_read(t_room **room_lst)
 			ft_putendl(line);
 		}
 		if (!ft_strchr(line, '-'))
-			ft_nodehandler(room_lst, line);
+			ft_nodehandler(room_lst, line, num_ants);
 		else
 			ft_linkhandler(room_lst, line);
 		free(line);

@@ -17,6 +17,7 @@
 
 typedef struct		s_room
 {
+	int				num_ants;
 	char			*id;
 	int				type;
 	int				x;
@@ -48,9 +49,9 @@ void	ft_setweight(t_room *room, t_room *head, int w);
 **	parse.c
 */
 int		ft_countants(void);
-void	ft_nodehandler(t_room **room_lst, char *line);
+void	ft_nodehandler(t_room **room_lst, char *line, int num_ants);
 void	ft_linkhandler(t_room **room_lst, char *line);
-int		ft_read(t_room **room_lst);
+int		ft_read(t_room **room_lst, int num_ants);
 
 /*
 **	utilities.c
@@ -71,9 +72,9 @@ void	ft_errorlist(char *error, t_room *head);
 /*
 **	list.c
 */
-t_room	*ft_newroom(char **split, int type);
-void	ft_lstaddf(t_room **room_lst, char *line, int type);
-void	ft_lstaddb(t_room **room_lst, char *line, int type);
+t_room	*ft_newroom(char **split, int type, int num_ants);
+void	ft_lstaddf(t_room **room_lst, char *line, int type, int num_ants);
+void	ft_lstaddb(t_room **room_lst, char *line, int type, int num_ants);
 void	ft_addlink(t_room *room_lst, char *l1, char *l2);
 void	ft_print_list(t_room *head);//debug
 

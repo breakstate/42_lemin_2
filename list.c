@@ -28,7 +28,7 @@
 **	mallocs and initializes a new room struct node
 */
 
-t_room		*ft_newroom(char **split, int type)
+t_room		*ft_newroom(char **split, int type, int num_ants)
 {
 	t_room	*new;
 
@@ -36,6 +36,7 @@ t_room		*ft_newroom(char **split, int type)
 	{
 		ft_error("Error: malloc error.");
 	}
+	new->num_ants = num_ants;
 	new->id = ft_strdup(split[0]);
 	new->type = type;
 	new->weight = -1;
@@ -53,7 +54,7 @@ t_room		*ft_newroom(char **split, int type)
 **	adds node to front of list
 */
 
-void		ft_lstaddf(t_room **room_lst, char *line, int type)
+void		ft_lstaddf(t_room **room_lst, char *line, int type, int num_ants)
 {
 	t_room	*temp;
 	t_room	*start;
@@ -69,12 +70,12 @@ void		ft_lstaddf(t_room **room_lst, char *line, int type)
 	if (*room_lst)
 	{
 		temp = *room_lst;
-		start = ft_newroom(split, type);
+		start = ft_newroom(split, type, num_ants);
 		start->next = temp;
 		*room_lst = start;
 	}
 	else
-		*room_lst = ft_newroom(split, type);
+		*room_lst = ft_newroom(split, type, num_ants);
 	ft_freearr(split);
 }
 
@@ -84,7 +85,7 @@ void		ft_lstaddf(t_room **room_lst, char *line, int type)
 **	adds node to back of list
 */
 
-void		ft_lstaddb(t_room **room_lst, char *line, int type)
+void		ft_lstaddb(t_room **room_lst, char *line, int type, int num_ants)
 {
 	t_room	*current;
 	int		split_num;
@@ -101,10 +102,10 @@ void		ft_lstaddb(t_room **room_lst, char *line, int type)
 	{
 		while (current->next)
 			current = current->next;
-		current->next = ft_newroom(split, type);
+		current->next = ft_newroom(split, type, num_ants);
 	}
 	else
-		*room_lst = ft_newroom(split, type);
+		*room_lst = ft_newroom(split, type, num_ants);
 	ft_freearr(split);
 }
 
