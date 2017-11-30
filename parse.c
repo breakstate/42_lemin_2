@@ -128,6 +128,7 @@ int			ft_read(t_room **room_lst, int num_ants)
 		{
 			free(line);
 			ret = get_next_line(0, &line);
+			ft_putstr("comment->");
 			ft_putendl(line);
 		}
 		if (!ft_strchr(line, '-'))

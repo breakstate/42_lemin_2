@@ -47,7 +47,9 @@ void		ft_moveall(t_room *head, int num_ants)
 {
 	t_room	*end_node;
 	t_room	*current;
+	int		cycle;
 
+	cycle = 0;
 	current = head;
 	while (current)
 	{
@@ -57,8 +59,11 @@ void		ft_moveall(t_room *head, int num_ants)
 	}
 	while (end_node->end_count != num_ants)
 	{
-		ft_movecycle(head);
+		ft_movecycle(head, &cycle);
 	}
+	ft_putstr("\nCompleted in [");
+	ft_putnbr(cycle);
+	ft_putstr("] cycles\n");
 }
 
 /*
@@ -68,7 +73,7 @@ void		ft_moveall(t_room *head, int num_ants)
 **	calls single move function until all possible single moves made
 */
 
-void		ft_movecycle(t_room *head)
+void		ft_movecycle(t_room *head, int *cycle)
 {
 	t_room	*c;
 	int		moved;
@@ -76,6 +81,8 @@ void		ft_movecycle(t_room *head)
 	ft_resetmoved(head);
 	moved = 0;
 	c = head;
+	//This loop loops from the head of the list looking for unmoved ants to move
+	//then calls the move ant function once a unmoved room is found.
 	while (c)
 	{
 		if (c->populated && c->moved == FALSE)
@@ -90,6 +97,7 @@ void		ft_movecycle(t_room *head)
 		}
 	}
 	ft_putstr("\n");
+	(*cycle)++;
 }
 
 /*
@@ -100,6 +108,25 @@ void		ft_movecycle(t_room *head)
 
 void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 {
+	h->end_count += (h->type == END) ? 1 : 0;
+	if (r->type == STRT)
+	{
+		h->pop = r->num_ants - (r->pop -1);
+		r->pop--;
+	}
+	else
+	{
+		h->pop = r->pop;
+		r->pop = 0;
+		r->moved = FALSE;
+	}
+	h->moved += (h->type == NRML) ? 1 : 0;
+	if (h->type != END || r->type != STRT)
+		*moved = TRUE;
+	else
+		*moved = FALSE;
+
+/*
 	h->pop = r->pop;
 	if (h->type == END)
 		h->end_count++;
@@ -117,6 +144,7 @@ void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 		h->moved = TRUE;
 	if (!(h->type == END || r->type == STRT))
 		*moved = TRUE;
+		*/
 }
 
 /*
@@ -128,27 +156,25 @@ void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 **	h is dest, r is src
 */
 
-int			ft_moveant(t_room *r, t_room *h)
+int			ft_moveant(t_room *c, t_room *h)
 {
 	char	**split;
 	int		moved;
 	int		i;
-	t_room	*debug;
 
-	debug = h;
 	moved = FALSE;
 	i = -1;
-	split = ft_strsplit(r->links, ';');
+	split = ft_strsplit(c->links, ';');
 	while (h && !moved)
 	{
 		while (split[++i] && !moved)
 		{
 			if (ft_strequ(split[i], h->id))
 			{
-				if (ft_isvalidmove(h, r))
+				if (ft_isvalidmove(h, c))
 				{
-					ft_ifvalidmove(h, r, &moved);
-					ft_printant(h, r);
+					ft_ifvalidmove(h, c, &moved);
+					ft_printant(h, c);
 				}
 			}
 		}
