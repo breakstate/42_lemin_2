@@ -22,17 +22,6 @@
 **	int		ft_move_ant();
 */
 
-void	ft_printarr(char **str)
-{
-	int		i;
-	i = 0;
-	while (str[i])
-	{
-		printf("links = [%s]\n", str[i]);
-		i++;
-	}
-}
-
 /*
 **===================================================================
 **	ft_resetmoved()
