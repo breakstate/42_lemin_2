@@ -149,7 +149,7 @@ void		ft_print_list(t_room *head)//for debugging purposes
 {
 	char	*type;
 
-	//printf("\n***LIST***:\n");
+	printf("\n***LIST***:\n");
 	while (head)
 	{
 		if (head->type == STRT)
@@ -158,8 +158,8 @@ void		ft_print_list(t_room *head)//for debugging purposes
 			type = "END";
 		else 
 			type = "NRML";
-		//printf("node id: [%s] | type:[%s] | weight: [%d] | pop = [%d] | links: [%s]\n", head->id, type, head->weight, head->pop, head->links);
+		printf("node id: [%s] | type:[%s] | weight: [%d] | pop = [%d] | links: [%s]\n", head->id, type, head->weight, head->pop, head->links);
 		head = head->next;
 	}
-	//printf("\ndone\n");
+	printf("\ndone\n");
 }

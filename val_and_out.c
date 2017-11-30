@@ -23,7 +23,7 @@
 **	prints the ant part in the output format
 */
 
-void	ft_printant(t_room *dest, t_room *src)
+void		ft_printant(t_room *dest, t_room *src)
 {
 	ft_putstr("L");
 	ft_putnbr(dest->pop);
@@ -38,7 +38,7 @@ void	ft_printant(t_room *dest, t_room *src)
 **	checks if start and end node exist and are not duplicates
 */
 
-int		ft_startend(t_room *head)
+int			ft_startend(t_room *head)
 {
 	t_room	*current;
 	int		strt;
