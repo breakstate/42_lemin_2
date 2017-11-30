@@ -25,6 +25,7 @@ typedef struct		s_room
 	int				populated;
 	char			*links;
 	int				moved;
+	int				end_count;
 	struct s_room	*next;
 }					t_room;
 

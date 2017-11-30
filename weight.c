@@ -81,4 +81,5 @@ void	ft_weight(t_room *room_lst, int num_ants)
 		ft_freelist(room_lst);
 		ft_error("Error: No start node.");
 	}
+	ft_print_list(head);
 }

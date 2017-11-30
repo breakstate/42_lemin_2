@@ -20,11 +20,11 @@ int			main(void)
 	room_lst = NULL;
 	if ((num_ants = ft_countants()) < 1)
 		return (-1);
-	ft_putstr("num_ants main = ");
 	ft_putnbr_endl(num_ants);
 	ft_read(&room_lst);
 	ft_startend(room_lst);
 	ft_weight(room_lst, num_ants);
+	ft_putendl("");
 	if (num_ants > 0)
 		ft_moveall(room_lst, num_ants);
 	else

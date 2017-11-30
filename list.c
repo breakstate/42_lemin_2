@@ -43,6 +43,7 @@ t_room		*ft_newroom(char **split, int type)
 	new->links = ft_strnew(0);
 	new->moved = FALSE;
 	new->next = NULL;
+	new->end_count = 0;
 	return (new);
 }
 
@@ -158,7 +159,7 @@ void		ft_print_list(t_room *head)//for debugging purposes
 			type = "END";
 		else 
 			type = "NRML";
-		printf("node id: [%s] | type:[%s] | weight: [%d] | pop = [%d] | links: [%s]\n", head->id, type, head->weight, head->pop, head->links);
+		printf("node id: [%s] | type:[%s] | pop = [%d] | weight: [%d] | links: [%s]\n", head->id, type, head->pop, head->weight, head->links);
 		head = head->next;
 	}
 	printf("\ndone\n");

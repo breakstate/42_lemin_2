@@ -22,6 +22,17 @@
 **	int		ft_move_ant();
 */
 
+void	ft_printarr(char **str)
+{
+	int		i;
+	i = 0;
+	while (str[i])
+	{
+		printf("links = [%s]\n", str[i]);
+		i++;
+	}
+}
+
 /*
 **===================================================================
 **	ft_resetmoved()
@@ -55,7 +66,7 @@ void		ft_moveall(t_room *head, int num_ants)
 			end_node = current;
 		current = current->next;
 	}
-	while (end_node->populated != num_ants)
+	while (end_node->end_count != num_ants)
 	{
 		ft_movecycle(head);
 	}
@@ -90,7 +101,7 @@ void		ft_movecycle(t_room *head)
 		}
 	}
 	ft_putstr("\n");
-	ft_print_list(head);
+	//ft_print_list(head);
 }
 
 /*
@@ -101,22 +112,27 @@ void		ft_movecycle(t_room *head)
 
 void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 {
-	if (h->type != END)
+	//if (r->type == STRT)
+	//{
+	//}
+	//else
 		h->pop = r->pop;
-	else
-		h->pop++;
+	if (h->type == END)
+		h->end_count++;
 	if (r->type == STRT)
+	{
+		h->pop = r->pop - (r->pop - 1);
 		r->pop--;
+	}
 	else
 	{
 		r->pop = 0;
 		r->moved = FALSE;
 	}
-	if (h->type == NRML)
-	{
+	if (!(h->type == END))
 		h->moved = TRUE;
-	}
-	*moved = TRUE;
+	if (h->type == END || r->type == STRT)
+		*moved = TRUE;
 }
 
 /*
@@ -136,22 +152,25 @@ int			ft_moveant(t_room *r, t_room *h)
 	t_room	*debug;
 
 	debug = h;
-	printf("moveant\n");//debug
+	//printf("moveant\n");//debug
 	moved = FALSE;
 	i = -1;
 	split = ft_strsplit(r->links, ';');
-	while (h && moved == FALSE)
+	//ft_printarr(split);
+	while (h && !moved)
 	{
-		while (split[++i] && moved == FALSE)
+		while (split[++i] && !moved)
 		{
 			if (ft_strequ(split[i], h->id))
 			{
+				//printf("[%s] matches with [%s]\n", split[i], h->id);
 				if (ft_isvalidmove(h, r))
 				{
 					ft_ifvalidmove(h, r, &moved);
-					if (moved == TRUE)
-						ft_printant(h, r);
-					ft_print_list(debug);
+					ft_printant(h, r);
+					//printf("\n");//debug
+					//ft_print_list(debug);//debug
+					//printf("\n");//debug					
 				}
 			}
 		}
