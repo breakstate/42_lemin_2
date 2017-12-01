@@ -121,30 +121,10 @@ void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 		r->moved = FALSE;
 	}
 	h->moved += (h->type == NRML) ? 1 : 0;
-	if (h->type != END || r->type != STRT)
+	if (h->type != END && r->type != STRT)
 		*moved = TRUE;
 	else
 		*moved = FALSE;
-
-/*
-	h->pop = r->pop;
-	if (h->type == END)
-		h->end_count++;
-	if (r->type == STRT)
-	{
-		h->pop = r->num_ants - (r->pop - 1);
-		r->pop--;
-	}
-	else
-	{
-		r->pop = 0;
-		r->moved = FALSE;
-	}
-	if (!(h->type == END))
-		h->moved = TRUE;
-	if (!(h->type == END || r->type == STRT))
-		*moved = TRUE;
-		*/
 }
 
 /*
@@ -161,7 +141,9 @@ int			ft_moveant(t_room *c, t_room *h)
 	char	**split;
 	int		moved;
 	int		i;
+	t_room	*head;
 
+	head = h;
 	moved = FALSE;
 	i = -1;
 	split = ft_strsplit(c->links, ';');

@@ -111,6 +111,20 @@ void		ft_linkhandler(t_room **room_lst, char *line)
 }
 
 /*
+**	ft_ifcomment()
+**	handles comments and protects against memory over runs
+*/
+
+void		ft_ifcomment(char **line, int *ret)
+{
+	free(*line);
+	if ((*ret = get_next_line(0, line)) > 0)
+	{
+		ft_putendl(*line);		
+	}
+}
+
+/*
 **===================================================================
 **	read()
 **	parses rest of file after number of ants
@@ -126,10 +140,7 @@ int			ft_read(t_room **room_lst, int num_ants)
 		ft_putendl(line);
 		while (ft_iscomment(line) && ret > 0)
 		{
-			free(line);
-			ret = get_next_line(0, &line);
-			ft_putstr("comment->");
-			ft_putendl(line);
+			ft_ifcomment(&line, &ret);
 		}
 		if (!ft_strchr(line, '-'))
 			ft_nodehandler(room_lst, line, num_ants);
