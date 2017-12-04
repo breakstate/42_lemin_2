@@ -67,8 +67,6 @@ SRC = ft_isascii.c\
 	  ft_atoi.c\
 	  ft_isspace.c\
 	  get_next_line.c\
-	  ft_lstnew.c\
-	  ft_lstadd_back.c\
 	  ft_isupper.c\
 	  ft_islower.c\
 	  ft_putnbr_endl.c\

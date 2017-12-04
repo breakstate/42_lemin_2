@@ -2,7 +2,6 @@
 ##start
 s 1 2
 ##test
-##start
 a 5 0
 ##end
 e 9 2
@@ -10,6 +9,7 @@ b 5 A
 s-a
 s-b
 a-e
+#lolol
 b-e
 a-b
 ##test

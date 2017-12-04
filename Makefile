@@ -23,10 +23,10 @@ $(NAME):
 	gcc -g -o $(NAME) $(SRC) $(LIBFT)
 
 clean: 
-	rm -f $(NAME)
 	$(MAKE) clean -C ./libft
 
 fclean: clean
+	rm -f $(NAME)
 	$(MAKE) fclean -C ./libft
 
 re: fclean all

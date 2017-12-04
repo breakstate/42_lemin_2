@@ -6,12 +6,12 @@
 /*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/22 12:47:58 by bmoodley          #+#    #+#             */
-/*   Updated: 2017/09/04 14:11:08 by bmoodley         ###   ########.fr       */
+/*   Updated: 2017/12/04 15:45:12 by bmoodley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _GET_NEXT_LINE_H_
-# define _GET_NEXT_LINE_H_
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # define BUFF_SIZE 1000
 
@@ -27,6 +27,6 @@ typedef struct	s_gnl
 	int			pos;
 }				t_gnl;
 
-int		get_next_line(const int fd, char **line);
+int				get_next_line(const int fd, char **line);
 
 #endif
