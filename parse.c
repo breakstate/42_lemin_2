@@ -62,35 +62,30 @@ int			ft_countants(void)
 
 void		ft_nodehandler(t_room **room_lst, char *line, int num_ants)
 {
+	int		ret;
+
 	if (ft_strcmp(line, "##start") == 0)
 	{
-		get_next_line(0, &line);
-		if (ft_strchr(line, '#') == NULL)
-			ft_lstaddf(room_lst, line, STRT, num_ants);
-		ft_putendl(line);
-		free(line);
+		if ((ret = get_next_line(0, &line) == 1))
+		{
+			if (ft_strchr(line, '#') == NULL)
+				ft_lstaddf(room_lst, line, STRT, num_ants);
+			ft_putendl(line);
+			free(line);
+		}
 	}
 	else if (ft_strcmp(line, "##end") == 0)
 	{
-		get_next_line(0, &line);
-		if (ft_strchr(line, '#') == NULL)
-			ft_lstaddb(room_lst, line, END, num_ants);
-		ft_putendl(line);
-		free(line);
+		if ((ret = get_next_line(0, &line) == 1))
+		{
+			if (ft_strchr(line, '#') == NULL)
+				ft_lstaddb(room_lst, line, END, num_ants);
+			ft_putendl(line);
+			free(line);
+		}
 	}
 	else
 		(ft_nhhelper(room_lst, line));
-
-
-/*	else if (ft_strlen(line) > 0)
-	{
-		ft_lstaddb(room_lst, line, NRML, num_ants);
-	}
-	else
-	{
-		free(line);
-		ft_errorlist("Error: empty line.", *room_lst);
-	}*/
 }
 
 /*
@@ -125,7 +120,8 @@ void		ft_linkhandler(t_room **room_lst, char *line)
 
 void		ft_ifcomment(char **line, int *ret)
 {
-	free(*line);
+	if (*line)
+		free(*line);
 	if ((*ret = get_next_line(0, line)) > 0)
 	{
 		ft_putendl(*line);		
@@ -146,13 +142,11 @@ int			ft_read(t_room **room_lst, int num_ants)
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		ft_putendl(line);
-		while (ft_iscomment(line) && ret > 0)
-		{
-			ft_ifcomment(&line, &ret);
-		}
-		if (!ft_strchr(line, '-'))
+		if (ft_iscomment(line) && ret > 0)
+			ft_putendl(line);
+		else if (!ft_strchr(line, '-') && !ft_iscomment(line))
 			ft_nodehandler(room_lst, line, num_ants);
-		else
+		else if (!ft_iscomment(line))
 			ft_linkhandler(room_lst, line);
 		free(line);
 	}

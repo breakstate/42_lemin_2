@@ -13,7 +13,7 @@
 
 void	ft_nhhelper(t_room **room_lst, char *line)
 {
-	printf("ft_nhhelper: line = [%s]\n", line);
+	//printf("ft_nhhelper: line = [%s]\n", line);
 	if (ft_strchr(line, '#') != NULL)
 	{
 		free(line);

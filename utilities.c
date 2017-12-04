@@ -76,8 +76,12 @@ void		ft_error(char *error)
 
 int			ft_iscomment(char *str)
 {
-	if (ft_strlen(str) > 0 && str[0] == '#' && str[1] != '#')
+	if (ft_strlen(str) > 0 && ft_strchr(str, '#') != NULL &&
+	ft_strcmp("##start", str) != 0 && ft_strcmp("##end", str) != 0
+	&& ft_strchr(str, '#'))
+	{
 		return (1);
+	}
 	return (0);
 }
 
