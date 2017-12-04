@@ -147,7 +147,7 @@ void		ft_addlink(t_room *room_lst, char *l1, char *l2)
 **	prints list designated by head for debugging purposes
 */
 
-void		ft_print_list(t_room *head)//for debugging purposes
+void		ft_print_list(t_room *head)
 {
 	char	*type;
 

@@ -124,7 +124,7 @@ void		ft_ifcomment(char **line, int *ret)
 		free(*line);
 	if ((*ret = get_next_line(0, line)) > 0)
 	{
-		ft_putendl(*line);		
+		ft_putendl(*line);
 	}
 }
 

@@ -81,8 +81,6 @@ void		ft_movecycle(t_room *head, int *cycle)
 	ft_resetmoved(head);
 	moved = 0;
 	c = head;
-	//This loop loops from the head of the list looking for unmoved ants to move
-	//then calls the move ant function once a unmoved room is found.
 	while (c)
 	{
 		if (c->populated && c->moved == FALSE)
@@ -96,7 +94,6 @@ void		ft_movecycle(t_room *head, int *cycle)
 			c = head;
 		}
 	}
-	//ft_print_list(head);//debug
 	ft_putstr("\n");
 	(*cycle)++;
 }
@@ -112,7 +109,7 @@ void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 	h->end_count += (h->type == END) ? 1 : 0;
 	if (r->type == STRT)
 	{
-		h->pop = r->num_ants - (r->pop -1);
+		h->pop = r->num_ants - (r->pop - 1);
 		r->pop--;
 	}
 	else
@@ -122,10 +119,6 @@ void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 		r->moved = FALSE;
 	}
 	h->moved += (h->type == NRML) ? 1 : 0;
-	//if (h->type != END && r->type != STRT)
-	//	*moved = TRUE;
-	//else
-	//	*moved = FALSE;
 	*moved = TRUE;
 }
 
@@ -143,9 +136,7 @@ int			ft_moveant(t_room *c, t_room *h)
 	char	**split;
 	int		moved;
 	int		i;
-	t_room	*head;
 
-	head = h;
 	moved = FALSE;
 	i = -1;
 	split = ft_strsplit(c->links, ';');
@@ -159,7 +150,6 @@ int			ft_moveant(t_room *c, t_room *h)
 				{
 					ft_ifvalidmove(h, c, &moved);
 					ft_printant(h, c);
-					//printf("moved = [%d]\n", moved);//debug
 				}
 			}
 		}
