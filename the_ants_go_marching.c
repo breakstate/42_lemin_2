@@ -109,13 +109,13 @@ void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 	h->end_count += (h->type == END) ? 1 : 0;
 	if (r->type == STRT)
 	{
-		h->pop = r->num_ants - (r->pop - 1);
-		r->pop--;
+		h->POP = r->num_ants - (r->POP - 1);
+		r->POP--;
 	}
 	else
 	{
-		h->pop = r->pop;
-		r->pop = 0;
+		h->POP = r->POP;
+		r->POP = 0;
 		r->moved = FALSE;
 	}
 	h->moved += (h->type == NRML) ? 1 : 0;

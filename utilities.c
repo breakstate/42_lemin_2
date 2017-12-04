@@ -30,8 +30,8 @@
 
 int			ft_isvalidmove(t_room *dest, t_room *src)
 {
-	if (dest->w < src->w && (dest->pop == 0 || dest->type == END)
-	&& src->moved == 0 && src->pop > 0)
+	if (dest->W < src->W && (dest->POP == 0 || dest->type == END)
+	&& src->moved == 0 && src->POP > 0)
 		return (1);
 	return (0);
 }

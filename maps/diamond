@@ -1,8 +1,10 @@
 3
+##start
 s 1 2
 ##test
-##end
+##start
 a 5 0
+##end
 e 9 2
 b 5 A
 s-a
@@ -10,4 +12,4 @@ s-b
 a-e
 b-e
 a-b
-##start
+##test

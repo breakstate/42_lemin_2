@@ -26,7 +26,7 @@
 void		ft_printant(t_room *dest, t_room *src)
 {
 	ft_putstr("L");
-	ft_putnbr(dest->pop);
+	ft_putnbr(dest->POP);
 	ft_putstr("-");
 	ft_putstr(dest->id);
 	ft_putstr(" ");

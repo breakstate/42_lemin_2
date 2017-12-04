@@ -6,13 +6,13 @@
 /*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/14 11:52:54 by bmoodley          #+#    #+#             */
-/*   Updated: 2017/09/14 11:59:35 by bmoodley         ###   ########.fr       */
+/*   Updated: 2017/12/04 15:32:25 by bmoodley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isupper(int	c)
+int		ft_isupper(int c)
 {
 	if (c >= 65 && c <= 90)
 		return (1);

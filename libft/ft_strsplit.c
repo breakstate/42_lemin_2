@@ -6,7 +6,7 @@
 /*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 17:13:12 by bmoodley          #+#    #+#             */
-/*   Updated: 2017/06/11 17:17:26 by bmoodley         ###   ########.fr       */
+/*   Updated: 2017/12/04 15:34:38 by bmoodley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static char		*ft_trim(const char *s, char c)
 		len--;
 	}
 	return (ft_strsub(s, i, len - i));
-
 }
 
 static char		*word_length(char *s, char c, int word)
@@ -50,10 +49,7 @@ static char		*word_length(char *s, char c, int word)
 	word_count = 0;
 	i = 1;
 	if (s[0] != c)
-	{
 		word_count++;
-		start = 0;
-	}
 	while (word_count < word)
 	{
 		if (s[i] != c && s[i - 1] == c)
@@ -96,12 +92,13 @@ char			**ft_strsplit(char const *s, char c)
 	int		word_count;
 	char	*trimmed_str;
 	char	*word;
+
 	i = 0;
 	word_count = count_words(s, c);
 	if (word_count == 0 || s[0] == '\0')
 		trimmed_str = 0;
 	else
-	trimmed_str = ft_trim(s, c);
+		trimmed_str = ft_trim(s, c);
 	strsplit = (char **)ft_memalloc(sizeof(char *) * word_count + 1);
 	if (strsplit == NULL)
 		return (NULL);

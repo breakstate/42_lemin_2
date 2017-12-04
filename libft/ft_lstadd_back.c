@@ -6,7 +6,7 @@
 /*   By: bmoodley <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/01 19:41:57 by bmoodley          #+#    #+#             */
-/*   Updated: 2017/07/01 20:43:13 by bmoodley         ###   ########.fr       */
+/*   Updated: 2017/12/04 15:13:29 by bmoodley         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstadd_back(t_list **alst, void *content)
 	{
 		while ((*alst)->next)
 		{
-			*alst  = (*alst)->next;
+			*alst = (*alst)->next;
 		}
 		(*alst)->next = ft_lstnew(content, 1);
 	}

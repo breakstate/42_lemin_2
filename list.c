@@ -13,13 +13,12 @@
 #include "lemin.h"
 
 /*
-**	5/5
+**	4/5
 **
 **	t_room	*ft_newroom();
 **	void	ft_lstaddf();
 **	void	ft_lstaddb();
 **	void	ft_addlink();
-**	void	ft_print_list(); debug
 */
 
 /*
@@ -54,7 +53,7 @@ t_room		*ft_newroom(char **split, int type, int num_ants)
 **	adds node to front of list
 */
 
-void		ft_lstaddf(t_room **room_lst, char *line, int type, int num_ants)
+void		ft_lstaddf(t_room **room_lst, char *line, int type, int ants)
 {
 	t_room	*temp;
 	t_room	*start;
@@ -70,12 +69,12 @@ void		ft_lstaddf(t_room **room_lst, char *line, int type, int num_ants)
 	if (*room_lst)
 	{
 		temp = *room_lst;
-		start = ft_newroom(split, type, num_ants);
+		start = ft_newroom(split, type, ants);
 		start->next = temp;
 		*room_lst = start;
 	}
 	else
-		*room_lst = ft_newroom(split, type, num_ants);
+		*room_lst = ft_newroom(split, type, ants);
 	ft_freearr(split);
 }
 
@@ -85,7 +84,7 @@ void		ft_lstaddf(t_room **room_lst, char *line, int type, int num_ants)
 **	adds node to back of list
 */
 
-void		ft_lstaddb(t_room **room_lst, char *line, int type, int num_ants)
+void		ft_lstaddb(t_room **room_lst, char *line, int type, int ants)
 {
 	t_room	*current;
 	int		split_num;
@@ -102,10 +101,10 @@ void		ft_lstaddb(t_room **room_lst, char *line, int type, int num_ants)
 	{
 		while (current->next)
 			current = current->next;
-		current->next = ft_newroom(split, type, num_ants);
+		current->next = ft_newroom(split, type, ants);
 	}
 	else
-		*room_lst = ft_newroom(split, type, num_ants);
+		*room_lst = ft_newroom(split, type, ants);
 	ft_freearr(split);
 }
 
@@ -139,29 +138,4 @@ void		ft_addlink(t_room *room_lst, char *l1, char *l2)
 		ft_freelist(room_lst);
 		exit(-1);
 	}
-}
-
-/*
-**===================================================================
-**	ft_print_list()
-**	prints list designated by head for debugging purposes
-*/
-
-void		ft_print_list(t_room *head)
-{
-	char	*type;
-
-	printf("\n***LIST***:\n");
-	while (head)
-	{
-		if (head->type == STRT)
-			type = "STRT";
-		else if (head->type == END)
-			type = "END";
-		else 
-			type = "NRML";
-		printf("node id: [%s] | type:[%s] | pop = [%d] | weight: [%d] | links: [%s]\n", head->id, type, head->pop, head->weight, head->links);
-		head = head->next;
-	}
-	printf("\ndone\n");
 }
