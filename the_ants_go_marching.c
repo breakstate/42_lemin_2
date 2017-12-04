@@ -96,6 +96,7 @@ void		ft_movecycle(t_room *head, int *cycle)
 			c = head;
 		}
 	}
+	//ft_print_list(head);//debug
 	ft_putstr("\n");
 	(*cycle)++;
 }
@@ -121,10 +122,11 @@ void		ft_ifvalidmove(t_room *h, t_room *r, int *moved)
 		r->moved = FALSE;
 	}
 	h->moved += (h->type == NRML) ? 1 : 0;
-	if (h->type != END && r->type != STRT)
-		*moved = TRUE;
-	else
-		*moved = FALSE;
+	//if (h->type != END && r->type != STRT)
+	//	*moved = TRUE;
+	//else
+	//	*moved = FALSE;
+	*moved = TRUE;
 }
 
 /*
@@ -157,6 +159,7 @@ int			ft_moveant(t_room *c, t_room *h)
 				{
 					ft_ifvalidmove(h, c, &moved);
 					ft_printant(h, c);
+					//printf("moved = [%d]\n", moved);//debug
 				}
 			}
 		}

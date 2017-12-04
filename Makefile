@@ -2,6 +2,7 @@ NAME = lemin
 
 SRC = main.c \
 		parse.c \
+		parse_2.c \
 		utilities.c \
 		utilities_2.c \
 		list.c \

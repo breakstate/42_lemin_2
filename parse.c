@@ -13,11 +13,12 @@
 #include "lemin.h"
 
 /*
-**	4/5
+**	5/5
 **
 **	int		ft_countants();
 **	void	ft_nodehandler();
 **	void	ft_linkhandler();
+**	ft_ifcomment();
 **	int		ft_read();
 */
 
@@ -64,18 +65,24 @@ void		ft_nodehandler(t_room **room_lst, char *line, int num_ants)
 	if (ft_strcmp(line, "##start") == 0)
 	{
 		get_next_line(0, &line);
-		ft_lstaddf(room_lst, line, STRT, num_ants);
+		if (ft_strchr(line, '#') == NULL)
+			ft_lstaddf(room_lst, line, STRT, num_ants);
 		ft_putendl(line);
 		free(line);
 	}
 	else if (ft_strcmp(line, "##end") == 0)
 	{
 		get_next_line(0, &line);
-		ft_lstaddb(room_lst, line, END, num_ants);
+		if (ft_strchr(line, '#') == NULL)
+			ft_lstaddb(room_lst, line, END, num_ants);
 		ft_putendl(line);
 		free(line);
 	}
-	else if (ft_strlen(line) > 0)
+	else
+		(ft_nhhelper(room_lst, line));
+
+
+/*	else if (ft_strlen(line) > 0)
 	{
 		ft_lstaddb(room_lst, line, NRML, num_ants);
 	}
@@ -83,7 +90,7 @@ void		ft_nodehandler(t_room **room_lst, char *line, int num_ants)
 	{
 		free(line);
 		ft_errorlist("Error: empty line.", *room_lst);
-	}
+	}*/
 }
 
 /*
@@ -111,6 +118,7 @@ void		ft_linkhandler(t_room **room_lst, char *line)
 }
 
 /*
+**===================================================================
 **	ft_ifcomment()
 **	handles comments and protects against memory over runs
 */
