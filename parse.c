@@ -13,12 +13,11 @@
 #include "lemin.h"
 
 /*
-**	5/5
+**	4/5
 **
 **	int		ft_countants();
 **	void	ft_nodehandler();
 **	void	ft_linkhandler();
-**	ft_ifcomment();
 **	int		ft_read();
 */
 
@@ -110,22 +109,6 @@ void		ft_linkhandler(t_room **room_lst, char *line)
 	ft_addlink(*room_lst, str_arr[1], str_arr[0]);
 	ft_freearr(str_arr);
 	str_arr = NULL;
-}
-
-/*
-**===================================================================
-**	ft_ifcomment()
-**	handles comments and protects against memory over runs
-*/
-
-void		ft_ifcomment(char **line, int *ret)
-{
-	if (*line)
-		free(*line);
-	if ((*ret = get_next_line(0, line)) > 0)
-	{
-		//ft_putendl(*line);
-	}
 }
 
 /*

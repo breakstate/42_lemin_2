@@ -62,7 +62,6 @@ void			ft_setweight(t_room *room, t_room *head, int w);
 int				ft_countants(void);
 void			ft_nodehandler(t_room **room_lst, char *line, int num_ants);
 void			ft_linkhandler(t_room **room_lst, char *line);
-void			ft_ifcomment(char **line, int *ret);
 int				ft_read(t_room **room_lst, int num_ants);
 
 /*
