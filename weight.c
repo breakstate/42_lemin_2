@@ -23,7 +23,8 @@
 **===================================================================
 **	ft_setweight()
 **	recursively traverses list of rooms, setting weights, starting from END
-** w is initial weight of END (0)
+**	w is initial weight of END (0)
+**	only if unset or bigger
 */
 
 void	ft_setweight(t_room *room, t_room *head, int w)

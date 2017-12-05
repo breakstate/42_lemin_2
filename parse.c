@@ -127,9 +127,10 @@ int			ft_read(t_room **room_lst, int num_ants)
 		ft_putendl(line);
 		if (ft_iscomment(line) && ret > 0)
 			;
-		else if (!ft_strchr(line, '-') && !ft_iscomment(line))
+		else if (!ft_strchr(line, '-') && !ft_iscomment(line)
+		&& line[0] != 'L')
 			ft_nodehandler(room_lst, line, num_ants);
-		else if (!ft_iscomment(line))
+		else if (!ft_iscomment(line) && ft_strchr(line, '-'))
 			ft_linkhandler(room_lst, line);
 		free(line);
 	}
